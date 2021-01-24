@@ -7,11 +7,11 @@ const Message = (props) => {
 };
 
 const Dialogs = (props) => {
-  let dialogsElements = props.state.dialogs.map((dialog) => (
+  let dialogsElements = props.dialogsPage.dialogs.map((dialog) => (
     <DialogItem name={dialog.name} id={dialog.id} />
   ));
 
-  let messagesElements = props.state.messages.map((message) => (
+  let messagesElements = props.dialogsPage.messages.map((message) => (
     <Message message={message.message} />
   ));
 
@@ -24,19 +24,26 @@ const Dialogs = (props) => {
   let onMessageChange = () => {
     let text = newDialogsElement.current.value;
     props.updateNewMessageText(text);
-  }
+  };
 
   return (
     <div className={css.dialogsBlock}>
-      <div>
-        <textarea onChange={onMessageChange} ref={newDialogsElement} value={props.newMessageText}/>
-      </div>
-      <div>
-        <button onClick={addMessage} >Send Message</button>
-      </div>
       <div className={css.dialogs}>
         <div className={css.dialogsItems}>{dialogsElements}</div>
         <div className={css.messages}>{messagesElements}</div>
+        <div className="sendMessageArea">
+          <div>
+            <textarea
+              onChange={onMessageChange}
+              ref={newDialogsElement}
+              value={props.newMessageText}
+            />
+          </div>
+
+          <div>
+            <button onClick={addMessage}>Send Message</button>
+          </div>
+        </div>
       </div>
     </div>
   );
