@@ -1,5 +1,4 @@
 let store = {
-
   _state: {
     //Profile Page
     profilePage: {
@@ -29,30 +28,15 @@ let store = {
     sidebar: {},
   },
 
-  getState () {
-    return this._state
+  _callSubscriber() {},
+
+  getState() {
+    return this._state;
   },
 
-  _callSubscriber () {
-
-  },
-
-  //Add new post on Profile page
-  addPost() {
-    let newPost = {
-      id: 6,
-      message: this._state.profilePage.newPostText,
-      likesCount: 0,
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = '';
-    this._callSubscriber(this._state);
-  },
-
-  //Update new post text
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
+  //Obresver
+  subscribe(observer) {
+    this._callSubscriber = observer;
   },
 
   //Add new message on Dialogs page
@@ -72,11 +56,26 @@ let store = {
     this._callSubscriber(this._state);
   },
 
-  //Obresver
-  subscribe(observer) {
-    this._callSubscriber = observer;
+  //Dispatch
+  dispatch(action) {
+    //Add new post on Profile page
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        id: 6,
+        message: this._state.profilePage.newPostText,
+        likesCount: 0,
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = '';
+      this._callSubscriber(this._state);
+    }
+    //Update new post text
+    else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    }
   },
-}; 
+};
 
 export default store;
-window.store = store
+window.store = store;
