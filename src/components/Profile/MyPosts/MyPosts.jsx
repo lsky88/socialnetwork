@@ -36,7 +36,6 @@ const MyPosts = (props) => {
       <div>
         <button onClick={addPost}>Add Post</button>
       </div>
-
       <div>New Post</div>
       <div className={css.posts}>{postsElements}</div>
     </div>
