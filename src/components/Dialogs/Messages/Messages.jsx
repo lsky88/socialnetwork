@@ -1,5 +1,5 @@
 import React from 'react';
-import { addMessageActionCreactor, updateNewMessageTextActionCreactor } from '../../../redux/state';
+import { sendMessageActionCreactor, updateNewMessageTextActionCreactor } from '../../../redux/state';
 import css from './Messages.module.css';
 import Message from './Message/Message'
 
@@ -10,8 +10,8 @@ const Messages = (props) => {
 
   let newDialogsElement = React.createRef();
 
-  let addMessage = () => {
-    props.dispatch(addMessageActionCreactor());
+  let sendMessage = () => {
+    props.dispatch(sendMessageActionCreactor());
   };
 
   let onMessageChange = () => {
@@ -22,7 +22,6 @@ const Messages = (props) => {
 
   return (
     <div className={css.messagesBlock}>
-      <div className={css.dialog}>{props.message}</div>
       <div className={css.messages}>{DialogsElement}</div>
       <div className={css.sendMessageArea}>
         <div>
@@ -33,7 +32,7 @@ const Messages = (props) => {
           />
         </div>
         <div>
-          <button onClick={addMessage}>Send Message</button>
+          <button onClick={sendMessage}>Send Message</button>
         </div>
       </div>
 

@@ -1,12 +1,18 @@
 .messages {
     height: 500px;
     padding: 10px;
-    color: blue;
+    color: yellowgreen;
     background-color: #353232;
 }
 
+.sendMessageArea {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 textarea {
-    width: 500px;
+    width: 900px;
     height: 100px;
     background-color: #000;
     border: 1px solid yellow;
