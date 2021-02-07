@@ -1,7 +1,10 @@
 import React from 'react';
-import { sendMessageActionCreactor, updateNewMessageTextActionCreactor } from '../../../redux/state';
+import {
+  sendMessageActionCreactor,
+  updateNewMessageTextActionCreactor,
+} from '../../../redux/dialogsReduser';
 import css from './Messages.module.css';
-import Message from './Message/Message'
+import Message from './Message/Message';
 
 const Messages = (props) => {
   let DialogsElement = props.messages.map((message) => (
@@ -35,7 +38,6 @@ const Messages = (props) => {
           <button onClick={sendMessage}>Send Message</button>
         </div>
       </div>
-
     </div>
   );
 };

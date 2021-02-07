@@ -1,8 +1,7 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const SEND_MESSAGE = 'SEND_MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
+import dialogsReduser from './dialogsReduser';
+import profileReduser from './profileReduser';
 
+//Store
 let store = {
   _state: {
     //Profile Page
@@ -46,51 +45,11 @@ let store = {
 
   //Dispatch
   dispatch(action) {
-    //Add new post on Profile page
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: 6,
-        message: this._state.profilePage.newPostText,
-        likesCount: 0,
-      };
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber(this._state);
-    }
-    //Update new post text
-    else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    }
-    //Add new message on Dialogs page
-    else if (action.type === SEND_MESSAGE) {
-      let newMessage = {
-        id: 3,
-        message: this._state.dialogsPage.newMessageText,
-      };
-      this._state.dialogsPage.newMessageText = '';
-      this._state.dialogsPage.messages.push(newMessage);
-      this._callSubscriber(this._state);
-    }
-    //Update new message text
-    else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._state.dialogsPage.newMessageText = action.newText;
-      this._callSubscriber(this._state);
-    }
+    this._state.profilePage = profileReduser(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReduser(this._state.dialogsPage, action);
+    this._callSubscriber(this._state);
   },
 };
-
-//ActionCreator
-export const addPostActionCreactor = () => ({ type: ADD_POST });
-export const updateNewPostTextActionCreactor = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: text,
-});
-export const sendMessageActionCreactor = () => ({ type: SEND_MESSAGE });
-export const updateNewMessageTextActionCreactor = (text) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT,
-  newText: text,
-});
 
 export default store;
 window.store = store;
