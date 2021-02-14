@@ -1,8 +1,4 @@
 import React from 'react';
-import {
-  sendMessageActionCreactor,
-  updateNewMessageTextActionCreactor,
-} from '../../../redux/dialogsReduser';
 import css from './Messages.module.css';
 import Message from './Message/Message';
 
@@ -13,14 +9,13 @@ const Messages = (props) => {
 
   let newDialogsElement = React.createRef();
 
-  let sendMessage = () => {
-    props.dispatch(sendMessageActionCreactor());
+  let onSendMessage = () => {
+    props.sendMessage();
   };
 
   let onMessageChange = () => {
     let text = newDialogsElement.current.value;
-    let action = updateNewMessageTextActionCreactor(text);
-    props.dispatch(action);
+    props.updateNewMessageText(text);
   };
 
   return (
@@ -35,7 +30,7 @@ const Messages = (props) => {
           />
         </div>
         <div>
-          <button onClick={sendMessage}>Send Message</button>
+          <button onClick={onSendMessage}>Send Message</button>
         </div>
       </div>
     </div>
