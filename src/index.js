@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from './StoreContext';
 
 //App
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = () => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
@@ -22,11 +22,10 @@ let rerenderEntireTree = (state) => {
   );
 };
 
-rerenderEntireTree(store.getState());
+rerenderEntireTree();
 
 store.subscribe(() => {
-  let state = store.getState();
-  rerenderEntireTree(state);
+  rerenderEntireTree();
 });
 
 reportWebVitals();
