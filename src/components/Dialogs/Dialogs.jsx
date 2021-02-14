@@ -1,12 +1,12 @@
 import React from 'react';
 import css from './Dialogs.module.css';
-import DialogItem from './DialogItem/DialogItem';
 import MessagesContainer from './Messages/MessagesContainer';
+import DialogItemContainer from './DialogItem/DialogItemContainer';
 
 const Dialogs = (props) => {
   return (
     <div className={css.dialogs}>
-      <DialogItem dialogs={props.dialogsPage.dialogs} />
+      <DialogItemContainer  store={props.store} />
       <MessagesContainer store={props.store} />
     </div>
   );
