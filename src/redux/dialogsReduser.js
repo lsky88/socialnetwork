@@ -26,14 +26,17 @@ const dialogsReduser = (state = initialState, action) => {
         id: 3,
         message: state.newMessageText,
       };
-      state.messages.push(newMessage);
-      state.newMessageText = '';
-      return state;
+      let stateCopy = { ...state };
+      stateCopy.messages = [...state.messages];
+      stateCopy.messages.push(newMessage);
+      stateCopy.newMessageText = '';
+      return stateCopy;
     }
     //Update new message text
     case UPDATE_NEW_MESSAGE_TEXT: {
-      state.newMessageText = action.newText;
-      return state;
+      let stateCopy = { ...state };
+      stateCopy.newMessageText = action.newText;
+      return stateCopy;
     }
     default:
       return state;
