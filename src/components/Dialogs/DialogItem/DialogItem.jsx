@@ -4,7 +4,7 @@ import css from './DialogItem.module.css';
 
 const DialogItem = (props) => {
   let dialogsElements = props.dialogs.map((dialog) => (
-    <Dialog name={dialog.name} id={dialog.id} />
+    <Dialog name={dialog.name} key={dialog.id} id={dialog.id} />
   ));
   return (
     <div className={css.DialogItem}>
