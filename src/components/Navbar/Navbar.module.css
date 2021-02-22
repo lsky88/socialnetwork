@@ -1,15 +1,31 @@
 .navbar {
     grid-area: navbar;
     background-color: black;
-    color: white;
-    padding: 20px;
+    padding: 50px 10px;
+}
+
+.item {
+    width: 100%;
 }
 
 .item a {
+    display: block;
+    padding-left: 50px;
+    height: 100%;
+    line-height: 50px;
     color: white;
+    border-radius: 8px;
 }
 
 .item a.activeLink {
     color: yellow;
     font-weight: 600;
 }
+
+.item a:hover, .item a.activeLink:hover {
+    background-color: yellow;
+    transition: 1s;
+    transition-property: background-color;
+    color: black;
+}
+

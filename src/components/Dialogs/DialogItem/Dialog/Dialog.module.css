@@ -1,4 +1,27 @@
+
+.dialog a {
+    display: block;
+    padding: 5px 10px;
+    height: 100%;
+    line-height: 60px;
+    color: white;
+}
+
 a.activeLink {
     color: yellow;
-    font-weight: 900;
+    font-weight: 600;
+}
+
+.dialog a:hover, .dialog a.activeLink:hover {
+    background-color: yellow;
+    transition: 1s;
+    transition-property: background-color;
+    color: black;
+}
+
+.dialog img {
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 50px;
 }
