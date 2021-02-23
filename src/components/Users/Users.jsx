@@ -2,14 +2,43 @@ import React from 'react';
 import css from './Users.module.css';
 
 let Users = (props) => {
+  if (props.users.length === 0) {
+    props.setUsers({
+      users: [
+        {
+          id: 1,
+          followed: true,
+          photo: '',
+          fullName: 'Igor',
+          status: "i'm a boss!",
+          location: { country: 'USA', city: 'San-Francisco' },
+        },
+        {
+          id: 2,
+          followed: false,
+          photo: '',
+          fullName: 'Alfia',
+          status: "i'm a boss's wife!",
+          location: { country: 'USA', city: 'San-Francisco' },
+        },
+      ],
+    });
+  }
 
   return (
-    <div>
+    <div className={css.usersPage}>
       {props.users.map((user) => (
-        <div key={user.id}>
+        <div className={css.user} key={user.id}>
           <div>
             <img src="" alt="ava" />
-            {user.followed ? (
+          </div>
+          <div className={css.userInfo}>
+          <div>{user.fullName}</div>
+          <div>{user.location.city},</div>
+          <div>{user.location.country}</div>
+          </div>
+          <div>{user.status}</div>
+          {user.followed ? (
               <button
                 onClick={() => {
                   props.unfollow(user.id);
@@ -26,15 +55,6 @@ let Users = (props) => {
                 Unfollow
               </button>
             )}
-          </div>
-          <div>
-            <div>{user.fullName}</div>
-            <div>{user.status}</div>
-          </div>
-          <div>
-            <div>{user.location.city}</div>
-            <div>{user.location.country}</div>
-          </div>
         </div>
       ))}
     </div>

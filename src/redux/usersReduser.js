@@ -6,7 +6,7 @@ const SET_USERS = 'SET_USERS';
 let initialState = {
   users: [
     {
-      id: '1',
+      id: 1,
       followed: true,
       photo: '',
       fullName: 'Igor',
@@ -14,28 +14,12 @@ let initialState = {
       location: { country: 'USA', city: 'San-Francisco' },
     },
     {
-      id: '2',
-      followed: true,
+      id: 2,
+      followed: false,
       photo: '',
       fullName: 'Alfia',
       status: "i'm a boss's wife!",
       location: { country: 'USA', city: 'San-Francisco' },
-    },
-    {
-      id: '3',
-      followed: false,
-      photo: '',
-      fullName: 'Stas',
-      status: 'Like a boss!',
-      location: { country: 'Russia', city: 'Magnitogorsk' },
-    },
-    {
-      id: '4',
-      followed: true,
-      photo: '',
-      fullName: 'Julia',
-      status: 'Dragon is here!',
-      location: { country: 'Russia', city: 'Magnitogorsk' },
     },
   ],
 };
@@ -58,11 +42,11 @@ const usersReduser = (state = initialState, action) => {
     case UNFOLLOW:
       return {
         ...state,
-        users: state.users.map((users) => {
-          if (users.id === action.userId) {
-            return { ...users, followed: false };
+        users: state.users.map((user) => {
+          if (user.id === action.userId) {
+            return { ...user, followed: false };
           }
-          return users;
+          return user;
         }),
       };
 
