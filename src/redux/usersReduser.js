@@ -5,22 +5,22 @@ const SET_USERS = 'SET_USERS';
 //InitialState
 let initialState = {
   users: [
-    {
-      id: 1,
-      followed: true,
-      photo: '',
-      fullName: 'Igor',
-      status: "i'm a boss!",
-      location: { country: 'USA', city: 'San-Francisco' },
-    },
-    {
-      id: 2,
-      followed: false,
-      photo: '',
-      fullName: 'Alfia',
-      status: "i'm a boss's wife!",
-      location: { country: 'USA', city: 'San-Francisco' },
-    },
+    // {
+    //   id: 1,
+    //   followed: true,
+    //   photo: '',
+    //   fullName: 'Igor',
+    //   status: "i'm a boss!",
+    //   location: { country: 'USA', city: 'San-Francisco' },
+    // },
+    // {
+    //   id: 2,
+    //   followed: false,
+    //   photo: '',
+    //   fullName: 'Alfia',
+    //   status: "i'm a boss's wife!",
+    //   location: { country: 'USA', city: 'San-Francisco' },
+    // },
   ],
 };
 
