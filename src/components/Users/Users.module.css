@@ -40,3 +40,17 @@
 .userInfo {
     margin-left: 10px;
 }
+
+.pages {
+    margin: 10px;
+}
+
+span {
+    padding-right: 2px;
+    color: rgba(255, 255, 0, 0.5);
+}
+
+.selectedPage {
+    font-weight: bold;
+    color: yellow;
+}

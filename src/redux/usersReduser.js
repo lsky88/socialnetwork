@@ -1,8 +1,11 @@
+// Cases =================================================
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
-//InitialState
+//InitialState ===========================================
 let initialState = {
   users: [
     // {
@@ -22,11 +25,15 @@ let initialState = {
     //   location: { country: 'USA', city: 'San-Francisco' },
     // },
   ],
+  pageSize: 5,
+  totalUsersCount: 0,
+  currentPage: 2,
 };
 
+//Users ====================================================
 const usersReduser = (state = initialState, action) => {
   switch (action.type) {
-    //Folow User
+    //Folow User ===========================================
     case FOLLOW:
       return {
         ...state,
@@ -38,7 +45,7 @@ const usersReduser = (state = initialState, action) => {
         }),
       };
 
-    //Unfolow User
+    //Unfolow User ==================================
     case UNFOLLOW:
       return {
         ...state,
@@ -50,20 +57,37 @@ const usersReduser = (state = initialState, action) => {
         }),
       };
 
-    //Set Users
+    //Set Users ======================================
     case SET_USERS: {
-      return { ...state, users: [...state.users, ...action.users] };
+      return { ...state, users: action.users };
     }
 
-    //Default
+    //Set Current Page =======================================
+    case SET_CURRENT_PAGE: {
+      return { ...state, currentPage: action.currentPage };
+    }
+    //Set Total Users Count ===================================
+    case SET_TOTAL_USERS_COUNT: {
+      return { ...state, totalUsersCount: action.count };
+    }
+
+    //Default ==================================================
     default:
       return state;
   }
 };
 
-//ActionCreator
+//ActionCreators =========================================================
 export const followAC = (userId) => ({ type: FOLLOW, userId });
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
+export const setCurrentPageAC = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage,
+});
+export const setUsersTotalCountAC = (totalUsersCount) => ({
+  type: SET_TOTAL_USERS_COUNT,
+  count: totalUsersCount,
+});
 
 export default usersReduser;
