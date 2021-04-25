@@ -1,5 +1,4 @@
 // Imports =========================================
-
 import React from 'react';
 import css from './Users.module.css';
 import userPhoto from '../../assets/img/user.jpg';
