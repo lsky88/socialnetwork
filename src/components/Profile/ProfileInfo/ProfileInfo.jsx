@@ -1,6 +1,8 @@
+// Imports =======================================
 import React from 'react';
 import css from './ProfileInfo.module.css';
 
+// ProfileInfo ===================================
 const ProfileInfo = (props) => {
   return (
     <div>

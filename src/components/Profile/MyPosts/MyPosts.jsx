@@ -1,7 +1,9 @@
+// Impotrs ========================================
 import React from 'react';
 import css from './MyPosts.module.css';
 import Post from './Post/Post';
 
+// MyPosts =======================================
 const MyPosts = (props) => {
   let postsElements = props.posts.map((post) => (
     <Post message={post.message} likesCount={post.likesCount} />

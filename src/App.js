@@ -1,4 +1,4 @@
-//Imports
+//Imports =========================================================
 import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
@@ -11,7 +11,7 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 
-//App
+//App =============================================================
 const App = (props) => {
   return (
     <div className="app-wrapper">
